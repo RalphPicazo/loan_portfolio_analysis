@@ -1,10 +1,16 @@
-# Loan Portfolio Analysis
+# Loan Portfolio Analysis with Behavioral Risk Segmentation
 
 SQL-based analysis of a fintech loan portfolio focused on repayment behavior, credit risk, and borrower segmentation.
 
+---
+
 ## Project Overview
 
-This project analyzes a lending dataset to understand portfolio performance, default behavior, and repayment patterns. The goal is to identify risky borrower segments and provide actionable recommendations for the risk team.
+This project analyzes a lending dataset to understand portfolio performance, default behavior, and repayment patterns.  
+
+The goal is to identify risky borrower segments and provide actionable recommendations for the risk team.
+
+---
 
 ## Business Questions
 
@@ -13,6 +19,8 @@ This project analyzes a lending dataset to understand portfolio performance, def
 - How does borrower behavior relate to default risk?
 - How long does it take borrowers to make their first payment?
 
+---
+
 ## Dataset
 
 The analysis uses three main tables:
@@ -20,6 +28,8 @@ The analysis uses three main tables:
 - `users`
 - `loans`
 - `transactions`
+
+---
 
 ## Key Analyses
 
@@ -31,19 +41,64 @@ The analysis uses three main tables:
 - Repeat borrowers and default behavior
 - Average loan amount by status
 
+---
+
+## Advanced Segmentation (Segmentation 2.0)
+
+To improve risk understanding, a combined segmentation approach was implemented using:
+
+- Age ranges  
+- Days to first payment  
+- Acquisition channel  
+
+This allowed identifying risk patterns that are not visible when analyzing each variable independently.
+
+---
+
 ## Key Insights
 
-- Most loans are in `paid` status, indicating generally healthy portfolio performance.
-- Default rates are relatively consistent across demographic and acquisition segments.
-- Behavioral patterns, especially delayed first payment, appear to be more informative than static demographic segments.
-- Loan amount does not differ significantly across statuses, suggesting that repayment behavior may be a stronger risk indicator than loan size alone.
+- Most loans are in **paid** status, indicating overall healthy portfolio performance.
+
+- Default rates are relatively consistent across demographic and acquisition segments when analyzed independently.
+
+- Behavioral patterns, especially **delayed first payment**, are significantly more predictive of default risk than demographic variables.
+
+- Users who delay their first payment (**30+ days**) show a clear increase in default probability.
+
+- Segmentation 2.0 revealed that combining behavioral signals with acquisition channels amplifies risk detection.
+
+- Loan amount does not vary significantly across statuses, suggesting that repayment behavior is a stronger risk driver than loan size.
+
+---
 
 ## Business Recommendations
 
-- Prioritize behavioral indicators such as time to first payment.
-- Monitor borrowers who delay their first payment after disbursement.
-- Use repayment behavior as an input for risk scoring.
-- Complement demographic segmentation with transactional and behavioral data.
+- Prioritize behavioral indicators such as **time to first payment** as early risk signals.
+
+- Implement early warning systems for users who delay their first payment beyond **7–30 days**.
+
+- Monitor acquisition channels with higher default rates and refine targeting strategies.
+
+- Incorporate behavioral variables into credit scoring models.
+
+- Use combined segmentation (behavior + acquisition + demographics) to improve risk profiling.
+
+- Move from static segmentation to **behavior-driven risk assessment**.
+
+---
+
+## Business Impact
+
+This analysis demonstrates that behavioral data provides stronger predictive power than traditional demographic segmentation.
+
+By focusing on early repayment behavior, the risk team can:
+
+- Detect high-risk users earlier in the loan lifecycle  
+- Reduce default rates through proactive interventions  
+- Improve credit decisioning models  
+- Optimize acquisition strategies based on user quality  
+
+---
 
 ## Visualizations
 
@@ -62,16 +117,23 @@ The analysis uses three main tables:
 ### Days to First Payment
 ![Days to First Payment](images/days_to_first_payment_distribution.png)
 
+---
+
 ## SQL Techniques Used
 
-- CTEs
-- CASE statements
-- Conditional aggregation
-- Window functions
-- Joins
-- DATEDIFF
-- GROUP BY / HAVING
+- CTEs  
+- CASE statements  
+- Conditional aggregation  
+- Window functions  
+- Joins  
+- DATEDIFF  
+- GROUP BY / HAVING  
 
+---
+
+## Repository Structure
+
+```text
 loan-portfolio-analysis
 │
 ├── notebook
